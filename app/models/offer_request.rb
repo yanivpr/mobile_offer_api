@@ -22,8 +22,8 @@ class OfferRequest
     false
   end
 
-  def offers
-    MobileOfferApi.new(self).offers
+  def offers_response
+    MobileOfferApi.new(self).offers_response
   end
 
 end

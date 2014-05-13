@@ -7,11 +7,20 @@ class OfferRequestsController < ApplicationController
     @offer_request = OfferRequest.new params[:offer_request]
 
     unless @offer_request.valid?
-      render :new, notice: 'Please fix the errors'
+      flash.now[:alert] = 'Please fix the errors'
+      render :new
       return
     end
 
-    @offers = @offer_request.offers
+    offers_response = @offer_request.offers_response
+
+    if offers_response.has_errors
+      flash.now[:alert] = offers_response.error_message
+      render :new
+      return
+    end
+
+    @offers = offers_response.offers
   end
 
 end
