@@ -1,5 +1,5 @@
 <h1>Get Offers</h1>
-<%= form_for @offer, :url => offers_create_path do |f| %>
+<%= form_for @offer_request, :url => offer_requests_create_path do |f| %>
   <%= render 'error_messages', object: f.object %>
 
   <fieldset>
@@ -11,3 +11,5 @@
   <%= f.submit 'Get Offers' %>
 
 <% end %>
+
+<%= link_to 'Make another offers request', root_path %>

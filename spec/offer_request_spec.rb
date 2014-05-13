@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Offer do
+describe OfferRequest do
 
   it { should validate_presence_of(:uid) }
   it { should validate_presence_of(:pub0) }

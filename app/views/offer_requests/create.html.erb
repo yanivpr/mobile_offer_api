@@ -1,0 +1,11 @@
+<% if @offers.blank? %>
+  <div class=‘no_offers’>
+    No offers
+  </div>
+<% else %>
+  <h1>Received Offers:</h1>
+
+  <%= render @offers %>
+<% end %>
+
+<%= link_to 'Make another offers request', root_path %>

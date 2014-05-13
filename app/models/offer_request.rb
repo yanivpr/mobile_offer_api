@@ -1,7 +1,11 @@
-class Offer
+require 'mobile_offer_api'
+
+class OfferRequest
   include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming
+
+  include MobileOfferApiUrl
 
   attr_accessor :uid, :pub0, :page
 
@@ -16,6 +20,10 @@ class Offer
 
   def persisted?
     false
+  end
+
+  def offers
+    MobileOfferApi.new(self).offers
   end
 
 end

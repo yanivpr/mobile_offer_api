@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'offers/new'
-  post 'offers/create'
+  get 'offer_requests/new'
+  post 'offer_requests/create'
 
-  root 'offers#new'
+  root 'offer_requests#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
