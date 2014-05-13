@@ -1,0 +1,13 @@
+<h1>Get Offers</h1>
+<%= form_for @offer, :url => offers_create_path do |f| %>
+  <%= render 'error_messages', object: f.object %>
+
+  <fieldset>
+    <%= f.text_field :uid, placeholder: 'uid' %>
+    <%= f.text_field :pub0, placeholder: 'pub0' %>
+    <%= f.text_field :page, placeholder: 'page' %>
+  </fieldset>
+
+  <%= f.submit 'Get Offers' %>
+
+<% end %>

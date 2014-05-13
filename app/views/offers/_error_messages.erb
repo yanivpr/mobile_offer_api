@@ -1,0 +1,10 @@
+<% if object && object.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= "Please fix #{object.errors.size} #{object.class.to_s.underscore.humanize.downcase} errors" %></h3>
+    <ul>
+      <% object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
