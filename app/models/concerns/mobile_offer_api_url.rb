@@ -25,7 +25,7 @@ module MobileOfferApiUrl
   end
 
   def params_url
-    api_params = base_params.merge dynamic_params
+    api_params = base_params.merge(dynamic_params)
     hashkey = SecuritySignature.sign(api_params)
     api_params.merge!({hashkey: hashkey})
 
@@ -47,8 +47,8 @@ module MobileOfferApiUrl
       pub0: pub0,
       page: page,
       uid: uid,
-      timestamp: DateTime.now.to_i
-    }
+      timestamp: DateTime.now.utc.to_i
+    }.reject{ |key,value| value.blank? }
   end
 
 end

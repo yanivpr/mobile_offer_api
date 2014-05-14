@@ -9,8 +9,8 @@ class OfferRequest
 
   attr_accessor :uid, :pub0, :page
 
-  validates_presence_of :uid, :pub0, :page
-  validates_numericality_of :page
+  validates_presence_of :uid, :pub0
+  validates_numericality_of :page, allow_blank: true
 
   def initialize(attributes = {})
     attributes.each do |name, value|

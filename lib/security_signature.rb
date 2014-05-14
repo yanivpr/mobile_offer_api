@@ -10,8 +10,7 @@ class SecuritySignature
   end
 
   def self.valid_response?(response)
-    data = "#{response.body}#{API_KEY}"
-    my_hash = sha1 data
+    my_hash = sha1("#{response.body}#{API_KEY}")
     response_hash = response.headers['X-Sponsorpay-Response-Signature']
 
     my_hash == response_hash
