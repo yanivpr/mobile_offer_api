@@ -19,7 +19,7 @@ class OffersResponse
       return self
     end
 
-    if error_500?(json_response)
+    if error_500?(@raw_response)
       set_error 'Server error'
       return self
     end
@@ -53,6 +53,6 @@ class OffersResponse
   end
 
   def error_500?(json_response)
-    json_response.headers['status'].starts_with("500")
+    json_response.headers['status'].starts_with?("500")
   end
 end
