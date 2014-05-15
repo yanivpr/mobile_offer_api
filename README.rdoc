@@ -1,6 +1,6 @@
 == README
 
-## Notes & Assumptions
+= Notes & Assumptions
 
 * API always returns 'NO_CONTENT' (that is, no offers), so besides rspec, I manually tested with fake data of found offers
 
