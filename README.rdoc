@@ -1,7 +1,7 @@
 == README
 
-Notes & Assumptions
+## Notes & Assumptions
 
-# API always returns 'NO_CONTENT' (that is, no offers), so besides rspec, I manually tested with fake data of found offers
+* API always returns 'NO_CONTENT' (that is, no offers), so besides rspec, I manually tested with fake data of found offers
 
-# Focused on utilizing the API, as I believe this is the purpose of th exercise
+* Focused on utilizing the API, as I believe this is the purpose of th exercise
