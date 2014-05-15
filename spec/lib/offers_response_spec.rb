@@ -68,11 +68,6 @@ describe OffersResponse do
         end
 
         context "having offers" do
-          before(:each) do
-            body = { 'code' => 'OK' }.to_json
-            @raw_response.stub(:body).and_return(body)
-          end
-
           it "should return one offer details" do
             body = {
                       'code' => 'OK',
@@ -95,6 +90,38 @@ describe OffersResponse do
             response.offers.first['title'].should == 'offer_title'
             response.offers.first['payout'].should == 'offer_payout'
             response.offers.first['thumbnail']['lowres'].should == 'lowres_url'
+          end
+
+          it "should return two offers details" do
+            body = {
+                'code' => 'OK',
+                'offers' => [
+                    {
+                        'title' => 'offer_title1',
+                        'payout' => 'offer_payout1',
+                        'thumbnail' => { 'lowres' => 'lowres_url1' }
+                    },
+                    {
+                        'title' => 'offer_title2',
+                        'payout' => 'offer_payout2',
+                        'thumbnail' => { 'lowres' => 'lowres_url2' }
+                    }
+                ]
+            }.to_json
+            @raw_response.stub(:body).and_return(body)
+            offers_response = OffersResponse.new(@raw_response)
+
+            response = offers_response.process
+
+            response.has_errors.should be_false
+            response.error_message.should be_blank
+            response.offers.should_not == []
+            response.offers.first['title'].should == 'offer_title1'
+            response.offers.first['payout'].should == 'offer_payout1'
+            response.offers.first['thumbnail']['lowres'].should == 'lowres_url1'
+            response.offers.last['title'].should == 'offer_title2'
+            response.offers.last['payout'].should == 'offer_payout2'
+            response.offers.last['thumbnail']['lowres'].should == 'lowres_url2'
           end
         end
       end

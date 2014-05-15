@@ -34,6 +34,7 @@ class OffersResponse
     end
 
     self.offers = json_response['offers']
+    #self.offers = offers_manual_test_data
     self
   end
 
@@ -54,5 +55,20 @@ class OffersResponse
 
   def error_500?(json_response)
     json_response.headers['status'].starts_with?("500")
+  end
+
+  def offers_manual_test_data
+    [
+        {
+            'title' => 'offer I',
+            'payout' => '3.22$',
+            'thumbnail' => {'lowres' => 'http://cdn.sponsorpay.com/assets/1808/icon175x175-2_square_60.png'}
+        },
+        {
+            'title' => 'offer II',
+            'payout' => '2.41$',
+            'thumbnail' => {'lowres' => 'http://cdn.sponsorpay.com/assets/1808/icon175x175-2_square_60.png'}
+        }
+    ]
   end
 end

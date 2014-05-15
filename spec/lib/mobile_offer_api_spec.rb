@@ -10,6 +10,7 @@ describe MobileOfferApi do
     HTTParty.stub(:get).with('some_url').and_return(http_response)
     offers_response = Object.new
     OffersResponse.stub(:new).with(http_response).and_return(offers_response)
+
     offers_response.should_receive(:process)
 
     api = MobileOfferApi.new(offer_request)

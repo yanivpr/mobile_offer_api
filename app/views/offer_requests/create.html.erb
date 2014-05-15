@@ -5,7 +5,11 @@
 <% else %>
   <h1>Received Offers:</h1>
 
-  <%= render @offers %>
+  <ul>
+    <% @offers.each do |offer| %>
+      <%= render 'offer', offer: offer %>
+    <% end %>
+  </ul>
 <% end %>
 
 <%= link_to 'Make another offers request', root_path %>
