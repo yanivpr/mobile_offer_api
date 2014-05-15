@@ -67,6 +67,36 @@ describe OffersResponse do
           response.offers.should == []
         end
 
+        context "having offers" do
+          before(:each) do
+            body = { 'code' => 'OK' }.to_json
+            @raw_response.stub(:body).and_return(body)
+          end
+
+          it "should return one offer details" do
+            body = {
+                      'code' => 'OK',
+                      'offers' => [
+                          {
+                              'title' => 'offer_title',
+                              'payout' => 'offer_payout',
+                              'thumbnail' => { 'lowres' => 'lowres_url' }
+                          }
+                      ]
+                   }.to_json
+            @raw_response.stub(:body).and_return(body)
+            offers_response = OffersResponse.new(@raw_response)
+
+            response = offers_response.process
+
+            response.has_errors.should be_false
+            response.error_message.should be_blank
+            response.offers.should_not == []
+            response.offers.first['title'].should == 'offer_title'
+            response.offers.first['payout'].should == 'offer_payout'
+            response.offers.first['thumbnail']['lowres'].should == 'lowres_url'
+          end
+        end
       end
     end
 
